@@ -85,8 +85,9 @@ a:hover {
 }
 
 .masthead {
-  height: 320px;
-  background-size: cover;
+  height: 500px;
+  background-size: contain;
+  background-repeat: no-repeat;
   background-position: center;
   position: relative;
 }
@@ -439,7 +440,7 @@ a:hover {
 
 @media (max-width: 920px) {
   .masthead {
-    height: 280px;
+    height: 380px;
   }
   .masthead__title {
     font-size: 40px;
