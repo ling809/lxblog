@@ -86,7 +86,6 @@ a:hover {
 
 .masthead {
   height: 320px;
-  background-image: var(--hero-image);
   background-size: cover;
   background-position: center;
   position: relative;
