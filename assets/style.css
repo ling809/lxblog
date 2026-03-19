@@ -43,19 +43,7 @@ a:hover {
 }
 
 .topbar {
-  position: sticky;
-  top: 0;
-  z-index: 10;
-  background: transparent;
-  border-bottom: none;
-}
-
-.topbar__inner {
-  height: 60px;
-  display: flex;
-  align-items: center;
-  justify-content: space-between;
-  gap: 16px;
+  display: none;
 }
 
 .brand {
@@ -95,8 +83,7 @@ a:hover {
   position: relative;
   min-height: 42vh;
   display: flex;
-  align-items: center;
-  justify-content: center;
+  flex-direction: column;
   overflow: hidden;
   background: #1a2a3a;
 }
@@ -112,18 +99,27 @@ a:hover {
   image-rendering: crisp-edges;
 }
 
-.masthead::before {
-  content: "";
+.masthead__overlay {
   position: absolute;
   inset: 0;
-  background: linear-gradient(180deg, rgba(0, 0, 0, 0.20), rgba(0, 0, 0, 0.55));
+  background: linear-gradient(180deg, rgba(0, 0, 0, 0.30), rgba(0, 0, 0, 0.55));
   z-index: 0;
 }
 
-.masthead__inner {
-  height: 100%;
+.masthead__nav {
   position: relative;
-  z-index: 1;
+  z-index: 2;
+  height: 60px;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 16px;
+}
+
+.masthead__inner {
+  flex: 1;
+  position: relative;
+  z-index: 2;
   display: flex;
   align-items: center;
   justify-content: center;
@@ -155,7 +151,6 @@ a:hover {
   gap: 16px;
   padding: 18px 0 22px;
   align-items: start;
-  margin-top: -60px;
 }
 
 .hero {
