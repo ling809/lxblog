@@ -46,9 +46,8 @@ a:hover {
   position: sticky;
   top: 0;
   z-index: 10;
-  background: rgba(255, 255, 255, 0.72);
-  backdrop-filter: blur(10px);
-  border-bottom: 1px solid rgba(31, 42, 68, 0.10);
+  background: transparent;
+  border-bottom: none;
 }
 
 .topbar__inner {
@@ -62,7 +61,8 @@ a:hover {
 .brand {
   font-weight: 800;
   letter-spacing: 0.3px;
-  color: var(--text);
+  color: #fff;
+  text-shadow: 0 1px 6px rgba(0,0,0,0.35);
 }
 
 .nav {
@@ -73,15 +73,22 @@ a:hover {
 }
 
 .nav__link {
-  color: rgba(31, 42, 68, 0.82);
+  color: rgba(255, 255, 255, 0.90);
   padding: 8px 10px;
   border-radius: 10px;
+  text-shadow: 0 1px 4px rgba(0,0,0,0.3);
+  transition: color 0.2s;
+}
+
+.nav__link:hover {
+  color: #fff;
+  text-decoration: none;
 }
 
 .nav__link--active {
-  background: rgba(31, 116, 181, 0.10);
-  border: 1px solid rgba(31, 116, 181, 0.16);
-  color: var(--text);
+  background: rgba(255, 255, 255, 0.18);
+  border: 1px solid rgba(255, 255, 255, 0.30);
+  color: #fff;
 }
 
 .masthead {
@@ -101,18 +108,22 @@ a:hover {
   height: 100%;
   object-fit: cover;
   object-position: center center;
+  image-rendering: -webkit-optimize-contrast;
+  image-rendering: crisp-edges;
 }
 
 .masthead::before {
   content: "";
   position: absolute;
   inset: 0;
-  background: linear-gradient(180deg, rgba(9, 14, 28, 0.05), var(--hero-overlay));
+  background: linear-gradient(180deg, rgba(0, 0, 0, 0.20), rgba(0, 0, 0, 0.55));
+  z-index: 0;
 }
 
 .masthead__inner {
   height: 100%;
   position: relative;
+  z-index: 1;
   display: flex;
   align-items: center;
   justify-content: center;
@@ -124,14 +135,15 @@ a:hover {
   margin: 0;
   font-size: 52px;
   letter-spacing: 0.4px;
-  color: rgba(255, 255, 255, 0.95);
-  text-shadow: 0 10px 40px rgba(0, 0, 0, 0.45);
+  color: #ffffff;
+  text-shadow: 0 2px 12px rgba(0, 0, 0, 0.50);
 }
 
 .masthead__subtitle {
   margin: 12px 0 0;
   font-size: 14px;
-  color: rgba(255, 255, 255, 0.86);
+  color: rgba(255, 255, 255, 0.92);
+  text-shadow: 0 1px 6px rgba(0, 0, 0, 0.40);
 }
 
 .layout {
