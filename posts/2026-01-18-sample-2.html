@@ -1,0 +1,69 @@
+<!doctype html>
+<html lang="zh-CN">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>示例文章二 | 你的名字</title>
+    <meta name="description" content="示例文章" />
+    <link rel="stylesheet" href="../assets/style.css" />
+  </head>
+  <body>
+    <header class="topbar">
+      <div class="container topbar__inner">
+        <a class="brand" href="../index.html">你的名字</a>
+        <nav class="nav">
+          <a class="nav__link" href="../index.html">Home</a>
+          <a class="nav__link" href="../about.html">About</a>
+          <a class="nav__link" href="../archive.html">Archive</a>
+        </nav>
+      </div>
+    </header>
+
+    <main class="container single">
+      <article class="card prose">
+        <header class="post-header">
+          <h1>示例文章二</h1>
+          <div class="post-meta">
+            <span>January 18, 2026</span>
+            <span class="dot">·</span>
+            <span>分类：课程攻略</span>
+          </div>
+          <div class="tags">
+            <a class="tag" href="../archive.html#tag=课程攻略">课程攻略</a>
+            <a class="tag" href="../archive.html#tag=期末复习篇">期末复习篇</a>
+          </div>
+        </header>
+
+        <p>
+          如果你以后想更像真正博客（Markdown 写作、自动生成 HTML），我也可以给你做一个“本地一键构建”的小脚本。
+        </p>
+
+        <h2>结构建议</h2>
+        <ol>
+          <li>标题 + 摘要</li>
+          <li>目录（可选）</li>
+          <li>正文分段</li>
+          <li>参考资料</li>
+        </ol>
+      </article>
+
+      <div class="pager">
+        <a class="pager__link" href="./2026-01-18-sample-1.html">← 上一篇</a>
+        <a class="pager__link" href="../index.html">回主页 →</a>
+      </div>
+    </main>
+
+    <footer class="footer">
+      <div class="container footer__inner">
+        <span>Copyright © <span id="year"></span> 你的名字</span>
+        <span class="muted">Post</span>
+      </div>
+    </footer>
+
+    <script src="../assets/site.js"></script>
+    <script>
+      window.Site.boot();
+    </script>
+  </body>
+</html>
+

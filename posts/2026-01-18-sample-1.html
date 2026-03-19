@@ -1,0 +1,78 @@
+<!doctype html>
+<html lang="zh-CN">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>示例文章一 | 你的名字</title>
+    <meta name="description" content="示例文章" />
+    <link rel="stylesheet" href="../assets/style.css" />
+  </head>
+  <body>
+    <header class="topbar">
+      <div class="container topbar__inner">
+        <a class="brand" href="../index.html">你的名字</a>
+        <nav class="nav">
+          <a class="nav__link" href="../index.html">Home</a>
+          <a class="nav__link" href="../about.html">About</a>
+          <a class="nav__link" href="../archive.html">Archive</a>
+        </nav>
+      </div>
+    </header>
+
+    <main class="container single">
+      <article class="card prose">
+        <header class="post-header">
+          <h1>示例文章一</h1>
+          <div class="post-meta">
+            <span>January 18, 2026</span>
+            <span class="dot">·</span>
+            <span>分类：随笔</span>
+          </div>
+          <div class="tags">
+            <a class="tag" href="../archive.html#tag=随笔">随笔</a>
+            <a class="tag" href="../archive.html#tag=平时学习篇">平时学习篇</a>
+          </div>
+        </header>
+
+        <p>
+          这是一个文章页模板。你可以在这里写正文，支持常见 HTML（段落、列表、引用、代码块）。
+        </p>
+
+        <blockquote>
+          把你想强调的一句话放在引用里，会更像博客的风格。
+        </blockquote>
+
+        <h2>小节标题</h2>
+        <ul>
+          <li>要点 1</li>
+          <li>要点 2</li>
+          <li>要点 3</li>
+        </ul>
+
+        <pre><code>// 代码块示例
+function hello() {
+  console.log("Hello, world!");
+}
+</code></pre>
+      </article>
+
+      <div class="pager">
+        <a class="pager__link" href="../index.html">← 返回主页</a>
+        <a class="pager__link" href="./2026-01-18-sample-2.html">下一篇 →</a>
+      </div>
+    </main>
+
+    <footer class="footer">
+      <div class="container footer__inner">
+        <span>Copyright © <span id="year"></span> 你的名字</span>
+        <span class="muted">Post</span>
+      </div>
+    </footer>
+
+    <script src="../assets/site.js"></script>
+    <script>
+      window.Site.boot();
+    </script>
+  </body>
+</html>
+

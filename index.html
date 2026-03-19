@@ -1,0 +1,101 @@
+<!doctype html>
+<html lang="zh-CN">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>泠 | 个人主页</title>
+    <meta name="description" content="个人主页与博客" />
+    <link rel="stylesheet" href="./assets/style.css" />
+  </head>
+  <body>
+    <header class="topbar">
+      <div class="container topbar__inner">
+        <a class="brand" href="./index.html">泠</a>
+        <nav class="nav">
+          <a class="nav__link nav__link--active" href="./index.html">Home</a>
+          <a class="nav__link" href="./about.html">About</a>
+          <a class="nav__link" href="./archive.html">Archive</a>
+        </nav>
+      </div>
+    </header>
+
+    <section class="masthead" style="--hero-image: url('./assets/img/hero.jpg')">
+      <div class="container masthead__inner">
+        <div>
+          <h1 class="masthead__title">泠</h1>
+          <p class="masthead__subtitle">「愿戴荣光，坠入天渊」</p>
+        </div>
+      </div>
+    </section>
+
+    <main class="container layout">
+      <section class="hero card">
+        <div class="hero__row">
+          <img class="avatar" src="./assets/img/aimisi.jpg" alt="泠的头像" />
+          <div>
+            <h1 class="hero__title">关于我</h1>
+            <p class="hero__quote">愿戴荣光，坠入天渊</p>
+            <p class="hero__desc">
+              这里是我的个人主页与博客。你可以在 <a href="./about.html">About</a> 看到我的联系方式与更多信息。
+            </p>
+          </div>
+        </div>
+      </section>
+
+      <section class="content">
+        <div class="section-title">
+          <h2>Latest Posts</h2>
+          <a class="muted" href="./archive.html">查看全部 →</a>
+        </div>
+        <div id="postList" class="post-list"></div>
+
+        <div class="section-title">
+          <h2>Gallery</h2>
+          <span class="muted">放一些你喜欢的照片/作品</span>
+        </div>
+        <section class="gallery">
+          <figure class="gallery__item">
+            <img class="gallery__img" src="./assets/img/gallery/lsl.jpg" alt="展示图 lsl" />
+            <figcaption class="gallery__cap">lsl</figcaption>
+          </figure>
+          <figure class="gallery__item">
+            <img class="gallery__img" src="./assets/img/gallery/yn.jpg" alt="展示图 yn" />
+            <figcaption class="gallery__cap">yn</figcaption>
+          </figure>
+          <figure class="gallery__item">
+            <img class="gallery__img" src="./assets/img/gallery/fll.jpg" alt="展示图 fll" />
+            <figcaption class="gallery__cap">fll</figcaption>
+          </figure>
+        </section>
+      </section>
+
+      <aside class="sidebar">
+        <div class="card">
+          <div class="card__title">Featured Tags</div>
+          <div id="tagList" class="tags"></div>
+        </div>
+        <div class="card">
+          <div class="card__title">Friends</div>
+          <ul class="links">
+            <li><a href="#" rel="nofollow">Friend A</a></li>
+            <li><a href="#" rel="nofollow">Friend B</a></li>
+            <li><a href="#" rel="nofollow">Friend C</a></li>
+          </ul>
+        </div>
+      </aside>
+    </main>
+
+    <footer class="footer">
+      <div class="container footer__inner">
+        <span>Copyright © <span id="year"></span> 泠</span>
+        <span class="muted">Built with plain HTML/CSS/JS</span>
+      </div>
+    </footer>
+
+    <script src="./assets/site.js"></script>
+    <script>
+      window.Site.renderHome();
+    </script>
+  </body>
+</html>
+

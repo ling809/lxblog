@@ -1,0 +1,68 @@
+<!doctype html>
+<html lang="zh-CN">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>About | 泠</title>
+    <meta name="description" content="关于我" />
+    <link rel="stylesheet" href="./assets/style.css" />
+  </head>
+  <body>
+    <header class="topbar">
+      <div class="container topbar__inner">
+        <a class="brand" href="./index.html">泠</a>
+        <nav class="nav">
+          <a class="nav__link" href="./index.html">Home</a>
+          <a class="nav__link nav__link--active" href="./about.html">About</a>
+          <a class="nav__link" href="./archive.html">Archive</a>
+        </nav>
+      </div>
+    </header>
+
+    <section class="masthead" style="--hero-image: url('./assets/img/hero.jpg')">
+      <div class="container masthead__inner">
+        <div>
+          <h1 class="masthead__title">About</h1>
+          <p class="masthead__subtitle">愿戴荣光，坠入天渊</p>
+        </div>
+      </div>
+    </section>
+
+    <main class="container single">
+      <article class="card prose">
+        <h1>关于我</h1>
+        <div class="about-hero">
+          <img class="avatar avatar--lg" src="./assets/img/aimisi.jpg" alt="泠的头像" />
+          <div>
+            <p class="about-name">泠</p>
+            <p class="about-quote">「愿戴荣光，坠入天渊」</p>
+          </div>
+        </div>
+
+        <h2>联系我</h2>
+        <ul>
+          <li>邮箱：<a href="mailto:3240104781@zju.edu.cn">3240104781@zju.edu.cn</a></li>
+          <li>QQ：<a href="tencent://message/?uin=1264101490&amp;Site=&amp;Menu=yes">1264101490</a></li>
+        </ul>
+
+        <h2>小项目</h2>
+        <ul>
+          <li><a href="../index.html">（示例）俄罗斯方块</a>：你可以把项目链接放这里</li>
+        </ul>
+      </article>
+    </main>
+
+    <footer class="footer">
+      <div class="container footer__inner">
+        <span>Copyright © <span id="year"></span> 泠</span>
+        <span class="muted">About</span>
+      </div>
+    </footer>
+
+    <script src="./assets/site.js"></script>
+    <script>
+      window.Site.boot();
+    </script>
+  </body>
+</html>
+
