@@ -4,20 +4,28 @@
 
   const POSTS = [
     {
-      title: "示例文章一",
-      date: "2026-01-18",
-      category: "随笔",
-      tags: ["随笔", "平时学习篇"],
-      excerpt: "这是一个文章页模板。你可以在这里写正文、引用、列表与代码块。",
-      url: "./posts/2026-01-18-sample-1.html",
+      title: "学术文章示例",
+      date: "2026-03-01",
+      category: "学术",
+      tags: ["学术"],
+      excerpt: "这是一篇学术类文章。放入 PDF 后将在此展示。",
+      url: "./assets/pdf/academic-sample.pdf",
     },
     {
-      title: "示例文章二",
-      date: "2026-01-18",
-      category: "课程攻略",
-      tags: ["课程攻略", "期末复习篇"],
-      excerpt: "如果你想用 Markdown 写作并自动生成页面，我们也可以加一个本地构建脚本。",
-      url: "./posts/2026-01-18-sample-2.html",
+      title: "游戏文章示例",
+      date: "2026-03-01",
+      category: "游戏",
+      tags: ["游戏"],
+      excerpt: "这是一篇游戏类文章。放入 PDF 后将在此展示。",
+      url: "./assets/pdf/gaming-sample.pdf",
+    },
+    {
+      title: "杂谈文章示例",
+      date: "2026-03-01",
+      category: "杂谈",
+      tags: ["杂谈"],
+      excerpt: "这是一篇杂谈类文章。放入 PDF 后将在此展示。",
+      url: "./assets/pdf/misc-sample.pdf",
     },
   ].sort((a, b) => (a.date < b.date ? 1 : a.date > b.date ? -1 : 0));
 
