@@ -89,6 +89,120 @@
     if (y) y.textContent = String(new Date().getFullYear());
   }
 
+  // 留言板功能
+  const GUESTBOOK_KEY = "site_guestbook";
+
+  function getGuestbook() {
+    try {
+      return JSON.parse(localStorage.getItem(GUESTBOOK_KEY) || "[]");
+    } catch {
+      return [];
+    }
+  }
+
+  function saveGuestbook(messages) {
+    localStorage.setItem(GUESTBOOK_KEY, JSON.stringify(messages));
+  }
+
+  function formatGuestbookTime(timestamp) {
+    const d = new Date(timestamp);
+    const now = new Date();
+    const diff = now - d;
+    if (diff < 60000) return "刚刚";
+    if (diff < 3600000) return `${Math.floor(diff / 60000)} 分钟前`;
+    if (diff < 86400000) return `${Math.floor(diff / 3600000)} 小时前`;
+    if (diff < 604800000) return `${Math.floor(diff / 86400000)} 天前`;
+    return d.toLocaleDateString("zh-CN", { month: "short", day: "numeric" });
+  }
+
+  function escapeHtml(str) {
+    const div = document.createElement("div");
+    div.textContent = str;
+    return div.innerHTML;
+  }
+
+  function renderGuestbookList() {
+    const container = $("guestbookList");
+    if (!container) return;
+
+    const messages = getGuestbook();
+    container.innerHTML = "";
+
+    if (messages.length === 0) {
+      const empty = document.createElement("div");
+      empty.className = "guestbook-empty";
+      empty.textContent = "还没有留言，来做第一个吧~";
+      container.appendChild(empty);
+      return;
+    }
+
+    // 最新留言在前
+    const sorted = [...messages].sort((a, b) => b.time - a.time);
+
+    for (const msg of sorted) {
+      const item = document.createElement("div");
+      item.className = "guestbook-item";
+
+      const header = document.createElement("div");
+      header.className = "guestbook-item__header";
+
+      const name = document.createElement("span");
+      name.className = "guestbook-item__name";
+      name.textContent = escapeHtml(msg.name);
+
+      const time = document.createElement("span");
+      time.className = "guestbook-item__time";
+      time.textContent = formatGuestbookTime(msg.time);
+
+      header.appendChild(name);
+      header.appendChild(time);
+
+      const content = document.createElement("div");
+      content.className = "guestbook-item__content";
+      content.textContent = msg.message;
+
+      item.appendChild(header);
+      item.appendChild(content);
+      container.appendChild(item);
+    }
+  }
+
+  function setupGuestbook() {
+    const form = $("guestbookForm");
+    if (!form) return;
+
+    renderGuestbookList();
+
+    form.addEventListener("submit", (e) => {
+      e.preventDefault();
+
+      const nameInput = $("guestName");
+      const messageInput = $("guestMessage");
+      if (!nameInput || !messageInput) return;
+
+      const name = nameInput.value.trim();
+      const message = messageInput.value.trim();
+
+      if (!name || !message) return;
+
+      const messages = getGuestbook();
+      messages.push({
+        name,
+        message,
+        time: Date.now(),
+      });
+
+      // 最多保留 50 条
+      if (messages.length > 50) messages.splice(0, messages.length - 50);
+
+      saveGuestbook(messages);
+      renderGuestbookList();
+
+      nameInput.value = "";
+      messageInput.value = "";
+    });
+  }
+
   function uniqTags(posts) {
     const set = new Set();
     for (const p of posts) for (const t of p.tags) set.add(t);
@@ -152,6 +266,7 @@
     }
 
     renderTagPills(tags, uniqTags(POSTS).slice(0, 12));
+    setupGuestbook();
   }
 
   function parseHash() {

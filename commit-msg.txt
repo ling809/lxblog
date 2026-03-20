@@ -1,4 +1,0 @@
-Use local cover images for bilibili videos
-
-Download all 6 video covers from bilibili CDN to assets/img/covers/
-and use local paths to avoid referrer restriction on GitHub Pages.

@@ -69,6 +69,29 @@
           <div class="card__title">Featured Tags</div>
           <div id="tagList" class="tags"></div>
         </div>
+
+        <div class="card">
+          <div class="card__title">留言板</div>
+          <form id="guestbookForm" class="guestbook-form">
+            <input
+              type="text"
+              id="guestName"
+              class="input guestbook-input"
+              placeholder="你的ID"
+              maxlength="30"
+              required
+            />
+            <textarea
+              id="guestMessage"
+              class="input guestbook-textarea"
+              placeholder="说点什么吧..."
+              maxlength="200"
+              required
+            ></textarea>
+            <button type="submit" class="guestbook-btn">留言</button>
+          </form>
+          <div id="guestbookList" class="guestbook-list"></div>
+        </div>
       </aside>
     </main>
 
