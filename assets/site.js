@@ -4,28 +4,79 @@
 
   const POSTS = [
     {
-      title: "学术文章示例",
-      date: "2026-03-01",
+      title: "红山、良渚与石峁的文明模式差异及其对中华文明多元一体格局的贡献",
+      date: "2025-05-23",
       category: "学术",
       tags: ["学术"],
-      excerpt: "这是一篇学术类文章。放入 PDF 后将在此展示。",
-      url: "./assets/pdf/academic-sample.pdf",
+      excerpt: "探讨红山、良渚与石峁三大史前文明的独特模式及其在中华文明多元一体格局中的历史贡献。",
+      url: "./assets/pdf/学术/红山、良渚与石峁的文明模式差异及其对中华文明多元一体格局的贡献.pdf",
     },
     {
-      title: "游戏文章示例",
-      date: "2026-03-01",
-      category: "游戏",
-      tags: ["游戏"],
-      excerpt: "这是一篇游戏类文章。放入 PDF 后将在此展示。",
-      url: "./assets/pdf/gaming-sample.pdf",
+      title: "碳捕集、利用与封存（CCUS）技术",
+      date: "2025-06-02",
+      category: "学术",
+      tags: ["学术"],
+      excerpt: "系统介绍碳捕集、利用与封存（CCUS）技术的基本原理、发展现状与未来前景。",
+      url: "./assets/pdf/学术/碳捕集、利用与封存（CCUS）技术.pdf",
     },
     {
-      title: "杂谈文章示例",
-      date: "2026-03-01",
+      title: "戈林：权力的巅峰到覆灭",
+      date: "2026-03-19",
       category: "杂谈",
       tags: ["杂谈"],
-      excerpt: "这是一篇杂谈类文章。放入 PDF 后将在此展示。",
-      url: "./assets/pdf/misc-sample.pdf",
+      excerpt: "从权力的巅峰到最终的覆灭，回顾历史人物的命运轨迹。",
+      url: "./assets/pdf/杂谈/戈林：权力的巅峰到覆灭.pdf",
+    },
+  ].sort((a, b) => (a.date < b.date ? 1 : a.date > b.date ? -1 : 0));
+
+  const VIDEOS = [
+    {
+      title: "『AMV/鸣潮』\"未送出的门票\"",
+      date: "2025-07-28",
+      excerpt: "",
+      type: "bilibili",
+      bvid: "BV18N8EzoEgD",
+      cover: "https://i2.hdslb.com/bfs/archive/d89ebf82a601a063ef5aff1ac15c1e0498a99618.jpg",
+    },
+    {
+      title: "『AMV/巨人』\"艾伦，这里是你的家\"",
+      date: "2025-02-28",
+      excerpt: "",
+      type: "bilibili",
+      bvid: "BV1y19uYrEwi",
+      cover: "https://i0.hdslb.com/bfs/archive/3ae5287a174585a10e818490820c3233adeccfc5.jpg",
+    },
+    {
+      title: "『mad/电锯人』\"逃 避 人 生\"",
+      date: "2024-09-15",
+      excerpt: "",
+      type: "bilibili",
+      bvid: "BV1Jx42edEHD",
+      cover: "https://i2.hdslb.com/bfs/archive/fd9a51e282d4e535f87527930dfd54312f9e1101.jpg",
+    },
+    {
+      title: "『雪国』一切营求努力总归徒劳",
+      date: "2024-08-06",
+      excerpt: "银河仿佛哗的一声，向岛村的心头倾泻下来。",
+      type: "bilibili",
+      bvid: "BV1DfYNeCE9m",
+      cover: "https://i1.hdslb.com/bfs/archive/1054bc089b8354e1561e5cb30cc706ecedf5f436.jpg",
+    },
+    {
+      title: "『mad/孤独摇滚』\"所以我放弃了音乐\"",
+      date: "2023-01-01",
+      excerpt: "喜欢的歌和喜欢的番剧，做喜欢的事情永远不会后悔！",
+      type: "bilibili",
+      bvid: "BV1PK411q7oH",
+      cover: "https://i0.hdslb.com/bfs/archive/041de59ff7587e0b2917c56472989a27cefb4fb4.jpg",
+    },
+    {
+      title: "『紫罗兰/剧场版』\" 爱 \"",
+      date: "2021-08-10",
+      excerpt: "和你，手牵手，悠然漫步在奇幻森林中，采一朵野花，置于你发丝中，或踏足缤纷海滨，放一扇海螺，在你头顶。因为 with you，一切都美好至极。",
+      type: "bilibili",
+      bvid: "BV1wb4y167v8",
+      cover: "https://i2.hdslb.com/bfs/archive/b6f0e281596fb2a159d0c226c332c72678bb2ce5.jpg",
     },
   ].sort((a, b) => (a.date < b.date ? 1 : a.date > b.date ? -1 : 0));
 
@@ -242,10 +293,117 @@
     return dt.toLocaleDateString("en-US", { year: "numeric", month: "long", day: "numeric" });
   }
 
+  function renderVideo() {
+    boot();
+    const list = $("videoList");
+    if (!list) return;
+
+    list.innerHTML = "";
+    for (const v of VIDEOS) {
+      const card = document.createElement("article");
+      card.className = "video-card";
+
+      const thumb = document.createElement("div");
+      thumb.className = "video-thumb";
+
+      const img = document.createElement("img");
+      img.className = "video-thumb__img";
+      img.src = v.cover || "";
+      img.alt = v.title;
+      img.loading = "lazy";
+
+      const playWrap = document.createElement("div");
+      playWrap.className = "video-thumb__play";
+      const playIcon = document.createElement("div");
+      playIcon.className = "video-thumb__play-icon";
+      playWrap.appendChild(playIcon);
+
+      thumb.appendChild(img);
+      thumb.appendChild(playWrap);
+
+      const info = document.createElement("div");
+      info.className = "video-info";
+      const title = document.createElement("h3");
+      title.className = "video-info__title";
+      title.textContent = v.title;
+      const meta = document.createElement("p");
+      meta.className = "video-info__meta";
+      meta.textContent = formatDate(v.date);
+      info.appendChild(title);
+      info.appendChild(meta);
+
+      card.appendChild(thumb);
+      card.appendChild(info);
+
+      card.addEventListener("click", () => openVideo(v));
+      list.appendChild(card);
+    }
+  }
+
+  function openVideo(v) {
+    const modal = $("playerModal");
+    const playerWrap = $("modalPlayerWrap");
+    const titleEl = $("modalTitle");
+    if (!modal || !playerWrap) return;
+
+    playerWrap.innerHTML = "";
+    titleEl.textContent = v.title;
+
+    let el;
+    if (v.type === "bilibili") {
+      el = document.createElement("iframe");
+      el.className = "modal__player";
+      el.src = `https://player.bilibili.com/player.html?bvid=${v.bvid}&page=1&high_quality=1&danmaku=0`;
+    } else {
+      el = document.createElement("video");
+      el.className = "modal__player";
+      el.controls = true;
+      el.autoplay = true;
+      el.src = v.local;
+    }
+    el.allow = "autoplay; encrypted-media; fullscreen";
+    el.allowFullscreen = true;
+    el.frameBorder = "0";
+    playerWrap.appendChild(el);
+
+    modal.classList.add("is-open");
+    document.body.style.overflow = "hidden";
+  }
+
+  function closeVideo() {
+    const modal = $("playerModal");
+    const playerWrap = $("modalPlayerWrap");
+    if (!modal) return;
+    modal.classList.remove("is-open");
+    playerWrap.innerHTML = "";
+    document.body.style.overflow = "";
+  }
+
+  function setupModal() {
+    const closeBtn = $("modalClose");
+    const modal = $("playerModal");
+    if (closeBtn) closeBtn.addEventListener("click", closeVideo);
+    if (modal) {
+      modal.addEventListener("click", (e) => {
+        if (e.target === modal) closeVideo();
+      });
+    }
+    document.addEventListener("keydown", (e) => {
+      if (e.key === "Escape") closeVideo();
+    });
+  }
+
+  if (document.readyState === "loading") {
+    document.addEventListener("DOMContentLoaded", setupModal);
+  } else {
+    setupModal();
+  }
+
   window.Site = {
     boot,
     renderHome,
     renderArchive,
+    renderVideo,
   };
 })();
 

@@ -1,0 +1,9 @@
+Add video gallery, fix bugs, update about
+
+- Redesign video page: cover grid layout + modal player popup
+- Fix JS syntax error (player preload -> player.preload)
+- Fix cover fallback URL bug in renderVideo
+- Fix DOMContentLoaded race condition in modal setup
+- Add 5 bilibili videos with auto-fetched covers via API
+- Add bilibili space link to about page
+- Add video.html and assets/pdf/ to repo
