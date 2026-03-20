@@ -36,7 +36,7 @@
       excerpt: "",
       type: "bilibili",
       bvid: "BV18N8EzoEgD",
-      cover: "https://i2.hdslb.com/bfs/archive/d89ebf82a601a063ef5aff1ac15c1e0498a99618.jpg",
+      cover: "./assets/img/covers/01-wuchusongchupiao.jpg",
     },
     {
       title: "『AMV/巨人』\"艾伦，这里是你的家\"",
@@ -44,7 +44,7 @@
       excerpt: "",
       type: "bilibili",
       bvid: "BV1y19uYrEwi",
-      cover: "https://i0.hdslb.com/bfs/archive/3ae5287a174585a10e818490820c3233adeccfc5.jpg",
+      cover: "./assets/img/covers/02-ailun-jia.jpg",
     },
     {
       title: "『mad/电锯人』\"逃 避 人 生\"",
@@ -52,7 +52,7 @@
       excerpt: "",
       type: "bilibili",
       bvid: "BV1Jx42edEHD",
-      cover: "https://i2.hdslb.com/bfs/archive/fd9a51e282d4e535f87527930dfd54312f9e1101.jpg",
+      cover: "./assets/img/covers/03-dianjuren.jpg",
     },
     {
       title: "『雪国』一切营求努力总归徒劳",
@@ -60,7 +60,7 @@
       excerpt: "银河仿佛哗的一声，向岛村的心头倾泻下来。",
       type: "bilibili",
       bvid: "BV1DfYNeCE9m",
-      cover: "https://i1.hdslb.com/bfs/archive/1054bc089b8354e1561e5cb30cc706ecedf5f436.jpg",
+      cover: "./assets/img/covers/04-xueguo.jpg",
     },
     {
       title: "『mad/孤独摇滚』\"所以我放弃了音乐\"",
@@ -68,7 +68,7 @@
       excerpt: "喜欢的歌和喜欢的番剧，做喜欢的事情永远不会后悔！",
       type: "bilibili",
       bvid: "BV1PK411q7oH",
-      cover: "https://i0.hdslb.com/bfs/archive/041de59ff7587e0b2917c56472989a27cefb4fb4.jpg",
+      cover: "./assets/img/covers/05-gudugunshan.jpg",
     },
     {
       title: "『紫罗兰/剧场版』\" 爱 \"",
@@ -76,7 +76,7 @@
       excerpt: "和你，手牵手，悠然漫步在奇幻森林中，采一朵野花，置于你发丝中，或踏足缤纷海滨，放一扇海螺，在你头顶。因为 with you，一切都美好至极。",
       type: "bilibili",
       bvid: "BV1wb4y167v8",
-      cover: "https://i2.hdslb.com/bfs/archive/b6f0e281596fb2a159d0c226c332c72678bb2ce5.jpg",
+      cover: "./assets/img/covers/06-ziluolan.jpg",
     },
   ].sort((a, b) => (a.date < b.date ? 1 : a.date > b.date ? -1 : 0));
 

@@ -1,9 +1,4 @@
-Add video gallery, fix bugs, update about
+Use local cover images for bilibili videos
 
-- Redesign video page: cover grid layout + modal player popup
-- Fix JS syntax error (player preload -> player.preload)
-- Fix cover fallback URL bug in renderVideo
-- Fix DOMContentLoaded race condition in modal setup
-- Add 5 bilibili videos with auto-fetched covers via API
-- Add bilibili space link to about page
-- Add video.html and assets/pdf/ to repo
+Download all 6 video covers from bilibili CDN to assets/img/covers/
+and use local paths to avoid referrer restriction on GitHub Pages.
