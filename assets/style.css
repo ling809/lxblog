@@ -26,6 +26,7 @@ body {
   color: var(--text);
   background: radial-gradient(1000px 560px at 20% 0%, rgba(31, 116, 181, 0.12), transparent 55%),
     radial-gradient(900px 520px at 90% 10%, rgba(120, 86, 255, 0.10), transparent 55%), var(--page);
+  padding-bottom: 68px;
 }
 
 a {
@@ -574,6 +575,61 @@ a:hover {
   color: var(--muted);
   font-size: 12px;
   padding: 8px 0;
+}
+
+/* 底部音乐播放条 */
+.music-bar {
+  position: fixed;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  background: rgba(255, 255, 255, 0.92);
+  backdrop-filter: blur(12px);
+  -webkit-backdrop-filter: blur(12px);
+  border-top: 1px solid rgba(31, 42, 68, 0.10);
+  box-shadow: 0 -8px 32px rgba(16, 24, 40, 0.08);
+  z-index: 999;
+  padding: 8px 0;
+}
+
+.music-bar__inner {
+  max-width: 1040px;
+  margin: 0 auto;
+  padding: 0 18px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 20px;
+}
+
+.music-bar__info {
+  display: flex;
+  flex-direction: column;
+  gap: 2px;
+  min-width: 120px;
+}
+
+.music-bar__title {
+  font-size: 13px;
+  font-weight: 600;
+  color: var(--text);
+}
+
+.music-bar__artist {
+  font-size: 11px;
+  color: var(--muted);
+}
+
+.music-bar__player iframe {
+  display: block;
+  border-radius: 8px;
+  overflow: hidden;
+}
+
+@media (max-width: 520px) {
+  .music-bar__info {
+    display: none;
+  }
 }
 
 @media (max-width: 920px) {
