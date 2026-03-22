@@ -89,19 +89,48 @@
     if (y) y.textContent = String(new Date().getFullYear());
   }
 
-  // 留言板功能
-  const GUESTBOOK_KEY = "site_guestbook";
+  // 留言板功能 - GitHub Gist 存储
+  const GIST_ID = "d30563f613cfad75b5096b98fd349105";
+  const GIST_URL = `https://api.github.com/gists/${GIST_ID}`;
+  const RAW_URL = `https://gist.githubusercontent.com/ling809/${GIST_ID}/raw/guestbook.json`;
+  const TOKEN = "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";
+  let cachedMessages = [];
 
-  function getGuestbook() {
+  async function getGuestbook() {
     try {
-      return JSON.parse(localStorage.getItem(GUESTBOOK_KEY) || "[]");
+      const res = await fetch(RAW_URL + `?t=${Date.now()}`, {
+        headers: { Authorization: `token ${TOKEN}` },
+      });
+      if (!res.ok) throw new Error("fetch failed");
+      const data = await res.json();
+      cachedMessages = Array.isArray(data) ? data : [];
+      return cachedMessages;
     } catch {
-      return [];
+      return cachedMessages;
     }
   }
 
-  function saveGuestbook(messages) {
-    localStorage.setItem(GUESTBOOK_KEY, JSON.stringify(messages));
+  async function saveGuestbook(messages) {
+    cachedMessages = messages;
+    try {
+      const patchRes = await fetch(GIST_URL, {
+        method: "PATCH",
+        headers: {
+          Authorization: `token ${TOKEN}`,
+          "Content-Type": "application/json",
+        },
+        body: JSON.stringify({
+          files: {
+            "guestbook.json": {
+              content: JSON.stringify(messages, null, 2),
+            },
+          },
+        }),
+      });
+      if (!patchRes.ok) throw new Error("patch failed");
+    } catch (e) {
+      console.warn("保存失败", e);
+    }
   }
 
   function formatGuestbookTime(timestamp) {
@@ -121,11 +150,11 @@
     return div.innerHTML;
   }
 
-  function renderGuestbookList() {
+  function renderGuestbookList(messages) {
     const container = $("guestbookList");
     if (!container) return;
 
-    const messages = getGuestbook();
+    const list = messages || cachedMessages;
     container.innerHTML = "";
 
     if (messages.length === 0) {
@@ -171,9 +200,9 @@
     const form = $("guestbookForm");
     if (!form) return;
 
-    renderGuestbookList();
+    getGuestbook().then(renderGuestbookList);
 
-    form.addEventListener("submit", (e) => {
+    form.addEventListener("submit", async (e) => {
       e.preventDefault();
 
       const nameInput = $("guestName");
@@ -185,21 +214,26 @@
 
       if (!name || !message) return;
 
-      const messages = getGuestbook();
+      const btn = form.querySelector(".guestbook-btn");
+      btn.disabled = true;
+      btn.textContent = "发送中…";
+
+      const messages = cachedMessages.length ? [...cachedMessages] : [];
       messages.push({
         name,
         message,
         time: Date.now(),
       });
 
-      // 最多保留 50 条
       if (messages.length > 50) messages.splice(0, messages.length - 50);
 
-      saveGuestbook(messages);
-      renderGuestbookList();
+      await saveGuestbook(messages);
+      renderGuestbookList(messages);
 
       nameInput.value = "";
       messageInput.value = "";
+      btn.disabled = false;
+      btn.textContent = "留言";
     });
   }
 
