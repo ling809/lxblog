@@ -106,22 +106,33 @@
     <div class="music-bar">
       <div class="music-bar__inner">
         <div class="music-bar__info">
-          <span class="music-bar__title">远航星的告别</span>
-          <span class="music-bar__artist">鸣潮先约电台</span>
+          <span class="music-bar__title">愿戴荣光坠入天渊</span>
+          <span class="music-bar__artist">鸣潮</span>
         </div>
         <div class="music-bar__player">
-          <iframe 
-            frameborder="0" 
-            border="0" 
-            marginwidth="0" 
-            marginheight="0" 
-            width="280" 
-            height="52" 
-            src="https://music.163.com/outchain/player?id=3346496288&type=0&auto=0&height=52"
-          ></iframe>
+          <audio id="bgm" src="./assets/music/愿戴荣光坠入天渊.mp3" loop></audio>
+          <button class="music-btn" onclick="toggleMusic()">▶</button>
+          <input type="range" class="music-volume" min="0" max="1" step="0.1" value="0.5" onchange="setVolume(this.value)">
         </div>
       </div>
     </div>
+    <script>
+      const bgm = document.getElementById('bgm');
+      const musicBtn = document.querySelector('.music-btn');
+      bgm.volume = 0.5;
+      function toggleMusic() {
+        if (bgm.paused) {
+          bgm.play();
+          musicBtn.textContent = '⏸';
+        } else {
+          bgm.pause();
+          musicBtn.textContent = '▶';
+        }
+      }
+      function setVolume(v) {
+        bgm.volume = v;
+      }
+    </script>
 
     <script src="./assets/site.js"></script>
     <script>
