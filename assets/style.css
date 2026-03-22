@@ -582,38 +582,38 @@ a:hover {
   position: fixed;
   bottom: 16px;
   right: 16px;
-  background: rgba(255, 255, 255, 0.15);
-  backdrop-filter: blur(20px);
-  -webkit-backdrop-filter: blur(20px);
-  border: 1px solid rgba(255, 255, 255, 0.25);
+  background: rgba(20, 20, 30, 0.88);
+  backdrop-filter: blur(16px);
+  -webkit-backdrop-filter: blur(16px);
+  border: 1px solid rgba(255, 255, 255, 0.12);
   border-radius: 999px;
-  box-shadow: 0 8px 32px rgba(0, 0, 0, 0.15);
+  box-shadow: 0 8px 32px rgba(0, 0, 0, 0.3);
   z-index: 999;
-  padding: 6px 16px 6px 12px;
+  padding: 8px 20px 8px 14px;
 }
 
 .music-bar__inner {
   display: flex;
   align-items: center;
-  gap: 14px;
+  gap: 16px;
 }
 
 .music-bar__info {
   display: flex;
   flex-direction: column;
-  gap: 1px;
+  gap: 2px;
   min-width: 100px;
 }
 
 .music-bar__title {
-  font-size: 12px;
+  font-size: 13px;
   font-weight: 600;
   color: rgba(255, 255, 255, 0.95);
 }
 
 .music-bar__artist {
-  font-size: 10px;
-  color: rgba(255, 255, 255, 0.6);
+  font-size: 11px;
+  color: rgba(255, 255, 255, 0.55);
 }
 
 .music-bar__player iframe {
@@ -625,45 +625,46 @@ a:hover {
 .music-bar__player {
   display: flex;
   align-items: center;
-  gap: 10px;
+  gap: 12px;
 }
 
 .music-btn {
-  width: 32px;
-  height: 32px;
+  width: 36px;
+  height: 36px;
   border-radius: 50%;
   border: none;
-  background: rgba(255, 255, 255, 0.2);
+  background: linear-gradient(135deg, #5b8def, #7ba3ff);
   color: #fff;
-  font-size: 12px;
+  font-size: 13px;
   cursor: pointer;
   display: flex;
   align-items: center;
   justify-content: center;
   transition: all 0.2s;
+  box-shadow: 0 4px 12px rgba(91, 141, 239, 0.4);
 }
 
 .music-btn:hover {
-  background: rgba(255, 255, 255, 0.35);
   transform: scale(1.08);
+  box-shadow: 0 6px 16px rgba(91, 141, 239, 0.5);
 }
 
 .music-volume {
-  width: 60px;
-  height: 3px;
+  width: 70px;
+  height: 4px;
   -webkit-appearance: none;
   appearance: none;
-  background: rgba(255, 255, 255, 0.25);
+  background: rgba(255, 255, 255, 0.2);
   border-radius: 2px;
   outline: none;
 }
 
 .music-volume::-webkit-slider-thumb {
   -webkit-appearance: none;
-  width: 10px;
-  height: 10px;
+  width: 12px;
+  height: 12px;
   border-radius: 50%;
-  background: rgba(255, 255, 255, 0.9);
+  background: #7ba3ff;
   cursor: pointer;
 }
 
