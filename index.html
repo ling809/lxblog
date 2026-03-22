@@ -110,29 +110,10 @@
           <span class="music-bar__artist">鸣潮</span>
         </div>
         <div class="music-bar__player">
-          <audio id="bgm" src="./assets/music/愿戴荣光坠入天渊.mp3" loop></audio>
-          <button class="music-btn" onclick="toggleMusic()">▶</button>
-          <input type="range" class="music-volume" min="0" max="1" step="0.1" value="0.5" onchange="setVolume(this.value)">
+          <iframe src="player.html" style="border:none;width:160px;height:36px;border-radius:18px;" allow="autoplay"></iframe>
         </div>
       </div>
     </div>
-    <script>
-      const bgm = document.getElementById('bgm');
-      const musicBtn = document.querySelector('.music-btn');
-      bgm.volume = 0.5;
-      function toggleMusic() {
-        if (bgm.paused) {
-          bgm.play();
-          musicBtn.textContent = '⏸';
-        } else {
-          bgm.pause();
-          musicBtn.textContent = '▶';
-        }
-      }
-      function setVolume(v) {
-        bgm.volume = v;
-      }
-    </script>
 
     <script src="./assets/site.js"></script>
     <script>
