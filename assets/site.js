@@ -89,21 +89,20 @@
     if (y) y.textContent = String(new Date().getFullYear());
   }
 
-  // 留言板功能 - GitHub Gist 存储
-  const GIST_ID = "d30563f613cfad75b5096b98fd349105";
-  const GIST_URL = `https://api.github.com/gists/${GIST_ID}`;
-  const RAW_URL = `https://gist.githubusercontent.com/ling809/${GIST_ID}/raw/guestbook.json`;
-  const TOKEN = "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";
+  // 留言板功能 - Firebase Realtime Database
+  const FIREBASE_URL = "https://personal-7805b-default-rtdb.firebaseio.com/messages.json";
   let cachedMessages = [];
 
   async function getGuestbook() {
     try {
-      const res = await fetch(RAW_URL + `?t=${Date.now()}`, {
-        headers: { Authorization: `token ${TOKEN}` },
-      });
+      const res = await fetch(FIREBASE_URL);
       if (!res.ok) throw new Error("fetch failed");
       const data = await res.json();
-      cachedMessages = Array.isArray(data) ? data : [];
+      if (data && typeof data === "object") {
+        cachedMessages = Object.values(data);
+      } else {
+        cachedMessages = [];
+      }
       return cachedMessages;
     } catch {
       return cachedMessages;
@@ -113,21 +112,16 @@
   async function saveGuestbook(messages) {
     cachedMessages = messages;
     try {
-      const patchRes = await fetch(GIST_URL, {
-        method: "PATCH",
-        headers: {
-          Authorization: `token ${TOKEN}`,
-          "Content-Type": "application/json",
-        },
-        body: JSON.stringify({
-          files: {
-            "guestbook.json": {
-              content: JSON.stringify(messages, null, 2),
-            },
-          },
-        }),
+      const data = {};
+      messages.forEach((msg, i) => {
+        data[`msg_${Date.now()}_${i}`] = msg;
       });
-      if (!patchRes.ok) throw new Error("patch failed");
+      const res = await fetch(FIREBASE_URL, {
+        method: "PUT",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify(data),
+      });
+      if (!res.ok) throw new Error("save failed");
     } catch (e) {
       console.warn("保存失败", e);
     }
